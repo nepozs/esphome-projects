@@ -15,6 +15,8 @@ esp8266:
 wifi:
   ap:
     password: ${wifi_ap_password}
+  power_save_mode: none
+  output_power: 17
 
 api:
 logger:
