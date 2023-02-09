@@ -1,0 +1,38 @@
+substitutions:
+  name: esp01-ikea-vindriktning
+  wifi_ap_password: ""
+
+esphome:
+  name: ${name}
+  name_add_mac_suffix: true
+  project:
+    name: nepozs.esphome-projects
+    version: "1.0"
+
+esp8266:
+  board: esp01_1m
+
+wifi:
+  ap:
+    password: ${wifi_ap_password}
+
+api:
+logger:
+ota:
+improv_serial:
+captive_portal:
+
+web_server:
+  port: 80
+
+dashboard_import:
+  package_import_url: github://nepozs/esphome-projects/esp01-ikea-vindriktning.yaml@main
+
+uart:
+  rx_pin: GPIO2
+  baud_rate: 9600
+
+sensor:
+  - platform: pm1006
+    pm_2_5:
+      name: "Particulate Matter 2.5µm Concentration"
