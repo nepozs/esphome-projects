@@ -26,7 +26,7 @@ web_server:
   port: 80
 
 dashboard_import:
-  package_import_url: github://nepozs/esphome-projects/esp01-ikea-vindriktning.yaml@main
+  package_import_url: github://nepozs/esphome-projects/esp01-ikea-vindriktning.yaml@master
 
 uart:
   rx_pin: GPIO2
