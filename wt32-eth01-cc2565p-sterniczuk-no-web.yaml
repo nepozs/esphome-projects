@@ -1,0 +1,157 @@
+# modified YAML file to support Adoption by DIY device "cc2652p LAN" originally developed by sternicz.uk
+# this is  config with adresp-idf framework and enabled BLE proxy WITHOUT web-serwer (in normal situation proxy or web-sever should be disabled)
+# this version is NOT compatible with original firmware provided by sternicz.uk
+
+substitutions:
+  device_name: cc2652p2lan-no-websvr
+  friendly_name: LeMo cc2652p LAN NO-web
+
+esphome:
+  name: ${device_name}
+  name_add_mac_suffix: true
+  friendly_name: ${friendly_name}
+  project:
+    name: esphome.cc2652p2lan-incompatible-ota-with-factory-firmware
+    version: "0.2"
+
+esp32:
+  board: wt32-eth01
+#  framework:
+#    type: arduino
+  framework:
+    type: esp-idf
+
+# Ethernet cannot be used together with wifi
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO23
+  mdio_pin: GPIO18
+  clk_mode: GPIO0_IN
+  phy_addr: 1
+  power_pin: GPIO16
+#  manual_ip:
+#    static_ip: 192.168.1.111
+#    gateway: 192.168.1.1
+#    subnet: 255.255.255.0
+    
+#wifi:
+#  ssid: !secret wifi_ssid
+#  password: !secret wifi_password
+#  ap:
+#    ssid: "CC2652P01 Fallback Hotspot"
+#    password: "123678"
+
+# Enable logging
+logger:
+  level: VERBOSE
+
+# Enable Home Assistant API
+api:
+  reboot_timeout: 0s
+
+ota:
+
+## WEB SERVER available only in arduino framework and should be disabled even with arduino framework if BLE proxy is enabled
+#web_server:
+#  port: 80
+
+dashboard_import:
+  package_import_url: github://nepozs/esphome-projects/wt32-eth01-cc2565p-sterniczuk-no-web.yaml@master
+
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+
+# External component Stream Server
+external_components:
+  - source: github://oxan/esphome-stream-server
+#  - source: components
+#  - source: github://thegroove/esphome-zeroconf
+
+sensor:
+  - platform: uptime
+    name: "${device_name} Uptime"
+    filters:
+      - lambda: return x / 3600;
+    unit_of_measurement: "h"
+
+switch:
+  - platform: restart
+    name: "${friendly_name} Restart"
+
+  - platform: gpio
+    pin: 33
+    id: zRST_gpio
+    inverted: yes
+    restore_mode: ALWAYS_OFF
+
+  - platform: template
+    name: "cc2652p RST"
+    icon: mdi:toggle-switch
+    id: zRST
+    turn_on_action:
+      - switch.turn_on: zRST_gpio
+      - delay: 15ms
+      - switch.turn_off: zRST_gpio
+
+  - platform: gpio
+    pin: 32
+    name: "cc2652p BSL"
+    icon: mdi:toggle-switch
+    id: zBSL
+    inverted: yes
+    restore_mode: ALWAYS_OFF
+    internal: true
+
+  - platform: template
+    name: "cc2652p firmware update"
+    icon: mdi:cellphone-arrow-down
+    turn_on_action:
+      - script.execute: fw_update_mode
+    turn_off_action:
+      - switch.toggle: zRST
+
+script:
+  - id: fw_update_mode
+    then:
+      - switch.turn_on: zBSL
+      - delay: 1s
+      - switch.turn_on: zRST_gpio
+      - delay: 1s
+      - switch.turn_off: zRST_gpio
+      - logger.log: "Delaying ~10 seconds for TI chip to be ready"
+      - delay: 10s
+      - switch.turn_off: zBSL
+      - logger.log: "Update with cc2538-bsl tool now!"
+      - logger.log: "Usage: cc2538-bsl.py -p socket://ip_or_hostname:6638 -evw firmware.hex"
+
+# UART Settings
+uart:
+  id: uart_bus
+  rx_pin: GPIO5
+  tx_pin: GPIO17
+  baud_rate: 115200
+
+# Serial Bridge Settings,uncomment #port to change default 6638 TCP port
+stream_server:
+  uart_id: uart_bus
+#  port: 1234
+
+esp32_ble_tracker:
+  scan_parameters:
+    interval: 1100ms
+    window: 1100ms
+    active: true
+
+bluetooth_proxy:
+  active: true
+
+#zeroconf:
+#  - service: LeMo_cc2652p2lan
+#    protocol: tcp
+#    port: 6638
+#    txt:
+#      version: 1.0
+#      radio_type: znp
+#      baud_rate: 115200
+#      data_flow_control: software
