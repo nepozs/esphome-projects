@@ -1,6 +1,6 @@
 # modified YAML file to support Adoption by DIY device "cc2652p LAN" originally developed by sternicz.uk
 # this is  config with adresp-idf framework and enabled BLE proxy WITHOUT web-serwer (in normal situation proxy or web-sever should be disabled)
-# this version is NOT compatible with original firmware provided by sternicz.uk
+# this version is NOT compatible with OTA from original firmware provided by sternicz.uk
 
 substitutions:
   device_name: cc2652p2lan-no-websvr
