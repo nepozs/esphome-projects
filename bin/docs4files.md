@@ -4,7 +4,7 @@ Each file in a given zip archive contains a name consistent with the scheme:
 `project-name_file-format_ESPHome-version_features(options).bin`
 where:
 - `project-name` any meaningful name (if possible matching associated with YAML file)
-- `file-format ` can be `legacy` for ESPHome flasher https://github.com/esphome/esphome-flasher or `factory' for ESPHome web tools https://web.esphome.io/
+- `file-format ` can be `legacy` for ESPHome flasher https://github.com/esphome/esphome-flasher or `factory` for ESPHome web tools https://web.esphome.io/
 - `ESPHome-version` compiled with ESPHome with this version number
 - `features(options)` any meaningful names
 
