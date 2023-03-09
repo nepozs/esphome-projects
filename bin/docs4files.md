@@ -9,8 +9,10 @@ where:
 - `features(options)` any meaningful names
 
 examples:
+
 `esp01-ikea-vindriktning_legacy_2022_12_8.bin`
 project based on `esp01-ikea-vindriktning.yaml`, for ESPHome flasher, compiled with ESPHome 2022.12.8
+
 `cc2652p2lan-factory_ 2023_2_4_ble_nowebserver_espidf.bin`
 project based on `???.yaml`, for ESPHome web tools, compiled with ESPHome 2023.2.4, without web serwer, framework esp-idf
 
