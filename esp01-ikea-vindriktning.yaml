@@ -21,7 +21,8 @@ wifi:
 api:
 logger:
 ota:
-improv_serial:
+## imrov serial impossible when modlue is soldered inside Vindriktning device
+#improv_serial:
 captive_portal:
 
 web_server:
