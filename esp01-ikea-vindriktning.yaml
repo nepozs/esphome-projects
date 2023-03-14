@@ -24,7 +24,7 @@ api:
 logger:
   baud_rate: 0
 ota:
-## improv serial impossible when modlue is soldered inside Vindriktning device
+## improv serial impossible when modlue is soldered inside Vindriktning device, configure is possible using captive portal
 #improv_serial:
 captive_portal:
 
