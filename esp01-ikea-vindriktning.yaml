@@ -19,11 +19,12 @@ wifi:
   output_power: 17
 
 api:
-## logger over serial must be switched off when using hardware serial for other purpose
+## 1st stage modifying project to be ready for Hi-Link HLK-LD2410 (hardware logger makes no sense when ESP-01 is soldered in some device)
+## logger over serial must be switched off when using hardware serial for other purpose - 
 logger:
   baud_rate: 0
 ota:
-## imrov serial impossible when modlue is soldered inside Vindriktning device
+## improv serial impossible when modlue is soldered inside Vindriktning device
 #improv_serial:
 captive_portal:
 
