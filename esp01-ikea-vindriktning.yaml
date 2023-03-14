@@ -6,7 +6,7 @@ esphome:
   name: ${name}
   name_add_mac_suffix: true
   project:
-    name: nepozs.esphome-projects
+    name: nepozs.esphome-projects-vindriktning
     version: "1.0"
 
 esp8266:
