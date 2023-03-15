@@ -56,6 +56,9 @@ sensor:
     filters:
       - lambda: return x / 3600;
     unit_of_measurement: "h"
+  - platform: adc
+    pin: VCC
+    name: "${name} VCC Voltage"
 
 switch:
   - platform: restart
