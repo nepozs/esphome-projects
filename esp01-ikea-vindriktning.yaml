@@ -50,7 +50,12 @@ sensor:
           window_size: 7
           send_every: 4
           send_first_at: 3
-  
+  - platform: uptime
+    name: "${device_name} Uptime"
+    filters:
+      - lambda: return x / 3600;
+    unit_of_measurement: "h"
+
 switch:
   - platform: restart
     name: "$name Restart"
