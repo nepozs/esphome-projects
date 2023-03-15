@@ -52,13 +52,13 @@ sensor:
             send_first_at: 3
 
   - platform: uptime
-    name: "${device_name} Uptime"
+    name: "${name} Uptime"
     filters:
       - lambda: return x / 3600;
     unit_of_measurement: "h"
 
 switch:
   - platform: restart
-    name: "$name Restart"
+    name: "${name} Restart"
   - platform: factory_reset
-    name: "$name Restart with Factory Default Settings"
+    name: "${name} Restart with Factory Default Settings"
