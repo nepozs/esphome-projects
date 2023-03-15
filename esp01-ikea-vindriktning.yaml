@@ -35,8 +35,9 @@ web_server:
 dashboard_import:
   package_import_url: github://nepozs/esphome-projects/esp01-ikea-vindriktning.yaml@master
 
+# change to hardware UART
 uart:
-  rx_pin: GPIO2
+  rx_pin: GPIO3
   baud_rate: 9600
 
 sensor:
