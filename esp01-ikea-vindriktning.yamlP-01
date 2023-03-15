@@ -25,7 +25,7 @@ logger:
   baud_rate: 0
   esp8266_store_log_strings_in_flash: false
 ota:
-## improv serial impossible when modlue is soldered inside Vindriktning device, configure is possible using captive portal
+## improv serial impossible when ESP-01 modlue is soldered inside Vindriktning device, configure is possible using captive portal
 #improv_serial:
 captive_portal:
 
