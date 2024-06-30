@@ -46,7 +46,8 @@ api:
   reboot_timeout: 0s
 
 ota:
-
+  platform: esphome
+  
 ## WEB SERVER available only in arduino framework and shold be disabled even with arduino framework if BLE proxy is enabled
 web_server:
   port: 80
