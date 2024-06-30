@@ -12,7 +12,7 @@ esphome:
   friendly_name: ${friendly_name}
   project:
     name: esphome.cc2652p2lan-incompatible-ota-with-factory-firmware
-    version: "0.2"
+    version: "2024.6"
 
 esp32:
   board: wt32-eth01
@@ -50,7 +50,8 @@ api:
   reboot_timeout: 0s
 
 ota:
-
+  platform: esphome
+  
 ## WEB SERVER available only in arduino framework and should be disabled even with arduino framework if BLE proxy is enabled
 #web_server:
 #  port: 80
