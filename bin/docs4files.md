@@ -1,5 +1,7 @@
 # nepozs esphome-projects - information about bin files
 
+# the information below is out of date!!!
+
 Each file in a given zip archive contains a name consistent with the scheme:
 `project-name_file-format_ESPHome-version_features(options).bin`
 where:
