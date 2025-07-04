@@ -1031,7 +1031,7 @@ lvgl:
                   long_mode: dot
             on_short_click:
               - homeassistant.action:
-                  service: light.toggle
+                  action: light.toggle
                   data:
                     entity_id: light.kuchnia
         - button:
@@ -1052,7 +1052,7 @@ lvgl:
                   long_mode: dot
             on_short_click:
               - homeassistant.action:
-                  service: light.toggle
+                  action: light.toggle
                   data:
                     entity_id: light.salon_tv
         - obj:
@@ -1100,7 +1100,7 @@ lvgl:
                   long_mode: dot
             on_short_click:
               - homeassistant.action:
-                  service: switch.toggle
+                  action: switch.toggle
                   data:
                     entity_id: switch.frontyard_light_switch_1_2
         - button:
@@ -1121,7 +1121,7 @@ lvgl:
                   long_mode: dot
             on_short_click:
               - homeassistant.action:
-                  service: light.toggle
+                  action: light.toggle
                   data:
                     entity_id: light.lampka_biurkowa_biala
         - button:
@@ -1142,7 +1142,7 @@ lvgl:
                   long_mode: dot
             on_short_click:
               - homeassistant.action:
-                  service: switch.toggle
+                  action: switch.toggle
                   data:
                     entity_id: switch.water_pump_switch_1
     - id: power_page
